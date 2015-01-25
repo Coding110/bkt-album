@@ -19,6 +19,9 @@
     <script src="js/jquery.address-1.6.min.js"></script>
     <script src="js/wait.js"></script>
 	<script src="js/onload.js"></script>
+	
+	<script src="uploadify/jquery.uploadify.min.js" type="text/javascript"></script>
+	<link rel="stylesheet" type="text/css" href="uploadify/uploadify.css">
 
 
     <!-- style css  -->
@@ -772,11 +775,11 @@
                 <ul>
                 
                     <!-- icon download -->
-					<!--
+					<!---->  
                     <li>
-                        <a title="DOWNLOAD (PDF)" class="fb5-download" href=""></a>
+                        <a title="上传照片" class="fb5-download" href=""></a>
                     </li>
-                    -->                    
+                                      
                     
                     <!-- icon_zoom_in -->                              
                     <li>
@@ -823,10 +826,10 @@
                         <button type="button">GO</button>
                     </li>  
                      
-                    <!-- icon contact form                  
+                    <!-- icon contact form    -->              
                     <li>
                         <a title="SEND MESSAGE" class="contact"></a>
-                    </li>                   -->       
+                    </li>                          
                                     
                     <!-- icon fullscreen -->                 
                     <li>
@@ -865,12 +868,33 @@
 			<fieldset>
 			<h3>相册预览</h3>
 			<p>照片编辑完成后，请更新，否则相册无法正常预览。</p>	
-			<button class="bkt-update">更新</button><button class="bkt-not-update" onclick="return false">不更新</button>
+			<button class="bkt-btn-update">更新</button><button class="bkt-btn-not-update" onclick="return false">不更新</button>
 			</fieldset>
 			
 			</form>	
         </div>
         <!-- END UPDATE DIALOG --> 
+		
+		<!-- BEGIN UPLOAD DIALOG -->
+        <div id="fb5-contact" class="fb5-overlay bkt-upload">
+			<form style="width:500px;max-height:300px;left:40%;top:40%;">
+			<a class="fb5-close">X</a>		
+			
+			<fieldset>
+				<h3>上传照片</h3>
+				
+				<div class="upload-box">	
+				<div id="queue"></div>
+				<input id="file_upload" name="file_upload" type="file" multiple="true">				
+				</div>
+
+				<button class="bkt-btn-upload" onclick="javascript:jQuery('#file_upload').uploadify('upload','*'); return false;" >上传</button><button class="bkt-btn-not-upload" onclick="javascript:jQuery('#file_upload').uploadify('cancel','*');return false;">取消</button>
+			</fieldset>
+
+			</form>	
+
+        </div>
+        <!-- END UPLOAD DIALOG --> 
             
     
         <!-- BEGIN ALL PAGES -->
@@ -1011,10 +1035,22 @@
 	'lazy_loading_pages':'false'
     })
 
-		$(document).ready(function() {
-			$('.fancybox-overlay').click(function(){alert("in flipbook");});
-		});
 
+	jQuery(document).ready(function() {
+		//alert("init uploadify");
+		jQuery('#file_upload').uploadify({
+			'auto':false,
+			'formData': {
+				'timestamp' : '123456',
+				'token'     : 'abcdefghijk'
+			},
+			'swf'      : 'uploadify/uploadify.swf',
+			'uploader' : 'uploadify/uploadify.php',
+			'buttonText' : '打开本地图片',
+			'fileTypeDesc'   : '图片文件',
+    		'fileTypeExts'   : '*.jpg;*.jpeg;*.png;*.gif'
+		});
+	});
     </script>
 
 

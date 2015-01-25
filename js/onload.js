@@ -1539,7 +1539,10 @@ var Navigation_v5 = {
 		 $('.fb5-download').on('click', function(event) {
      	 
 		 
-		  
+		  $('.bkt-upload').addClass('active').animate({ opacity: 1 }, 1000);
+			contact_form();
+			clear_on_focus();
+			return false;
 		 
 		 
 		  //$.address.update();
@@ -1738,11 +1741,11 @@ function contact_form() {
 	});
 	*/
 
-	$('#fb5-contact .bkt-update').click(function() {
+	$('#fb5-contact .bkt-btn-update').click(function() {
 		alert("update");
 		close_overlay();
 	});
-	$('#fb5-contact .bkt-not-update').click(function() {
+	$('#fb5-contact .bkt-btn-not-update').click(function() {
 		alert("not update");
 		close_overlay();
 	});

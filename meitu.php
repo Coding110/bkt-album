@@ -10,8 +10,8 @@ window.onload=function(){
 	xiuxiu.embedSWF("altContent",3,"100%","100%");
        //修改为您自己的图片上传接口
 	xiuxiu.setUploadURL("http://web.upload.meitu.com/image_upload.php");
-        xiuxiu.setUploadType(2);
-        xiuxiu.setUploadDataFieldName("upload_file");
+    xiuxiu.setUploadType(2);
+    xiuxiu.setUploadDataFieldName("upload_file");
 	xiuxiu.onInit = function ()
 	{
 		xiuxiu.loadPhoto("http://shoptest.becktu.com/flipbook_fancybox_meitu/pages/04.jpg");
